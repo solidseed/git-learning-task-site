@@ -1,0 +1,425 @@
+html{
+    margin: 0px;
+    padding: 0px;
+    font-size: 62.5%;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+    font-size: 1.4rem;
+    font-family: "MS P ゴシック",Arial,"ヒラギノ明朝 Pro W3","Hiragino Kaku Gothic Pro","ヒラギノ明朝",Meiryo,sans-serif;
+}
+p{
+    margin: 8px 0px;
+    padding: 0px;
+}
+a{
+    text-decoration: none;
+}
+#app{
+    margin: 0px;
+    padding: 0px;
+    display: grid;
+    flex-direction: row;
+    justify-content: center;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "main_header"
+        "global_nav"
+        "main_contents"
+        "main_footer";
+}
+#main_header{
+    margin: 0px;
+    padding: 30px 0px;
+    grid-area: main_header;
+    justify-self: center;
+    align-self: center;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+}
+#main_header:before{
+    content: "";
+    background-color: #543e17;
+    filter: blur(7px);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: -1;
+}
+#main_header h1{
+    margin: 0px auto;
+    padding: 0px 0px 0px 10px;
+    width: 400px;
+    text-align: center;
+    font-size: 3.0rem;
+    color: #543e17;
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+#main_header h1 img{
+    margin-top: -20px;
+}
+#main_header h1 span{
+    margin: -20px 0px 0px 0px;
+    padding: 0px 0px 8px 0px;
+    display: block;
+    font-size: 1.4rem;
+}
+#main_header #catch_copy{
+    margin: 20px 0px 20px 0px;
+    padding: 20px;
+    color: #ffffff;
+    font-size: 2.6rem;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    animation: catch_copy_anime 1s ease;
+}
+@keyframes catch_copy_anime{
+    0%{
+        opacity: 0;
+        top: 50px;
+    }
+    100%{
+        opacity: 1;
+        top: 0px;
+    }
+}
+#main_header #catch_copy:before,
+#main_header #catch_copy:after{
+    content: "";
+    width: 20px;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+}
+#main_header #catch_copy:before{
+    margin: 0px 0px 0px 8px;
+    border-left: solid 5px #7bbc3a;
+    border-top: solid 5px #7bbc3a;
+    top: 0;
+    left: 0;
+}
+#main_header #catch_copy:after{
+    margin: 0px 8px 0px 0px;
+    border-right: solid 5px #7bbc3a;
+    border-bottom: solid 5px #7bbc3a;
+    bottom: 0;
+    right: 0;
+}
+#main_header #eye_catch{
+    margin: 0px;
+    padding: 0px;
+}
+#main_header #eye_catch img{
+    animation: catch_copy_anime 3s ease;
+}
+
+#global_nav{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    grid-area: global_nav;
+    justify-self: center;
+    border-top: 2px solid #533e17;
+    border-bottom: 2px solid #533e17;
+}
+#global_nav .nav_content{
+    margin: 0px;
+    padding: 0px;
+}
+#global_nav ul{
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+#global_nav li{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    transition: all .3s ease-in-out;
+}
+#global_nav li:hover{
+    background-color: #7bbc3a;
+}
+/*#global_nav li a{
+    margin: 0px;
+    padding: 10px;
+    display: block;
+    width: 125px;
+    color: #533e17;
+    text-align: center;
+    transition: all .3s ease-in-out;
+}
+#global_nav li a:hover{
+    color: #ffffff;
+}*/
+#global_nav li label{
+    margin: 0px;
+    padding: 10px;
+    display: block;
+    width: 125px;
+    color: #533e17;
+    text-align: center;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+}
+#global_nav li label:hover{
+    color: #ffffff;
+}
+
+#global_nav .nav_unshown {
+    display: none;
+}
+#global_nav .nav_open{
+    display: none;
+    width: 35px;
+    height: 40px;
+    cursor: pointer;
+    position: relative;
+    left: 16px;
+}
+#global_nav .nav_open span,
+#global_nav .nav_open span:before,
+#global_nav .nav_open span:after{
+    width: 35px;
+    height: 6px;
+    display: block;
+    background: #7bbc3a;
+    position:absolute;
+    transition: 0.5s ease-in-out;
+    content: '';
+}
+#global_nav .nav_open span:before{
+    bottom: -12px;
+}
+#global_nav .nav_open span:after{
+    bottom: -24px;
+}
+#global_nav .nav_close{
+    display: none;
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+#global_nav .close_btn{
+    margin: 0px;
+    padding: 10px 10px 10px 0px;
+    display: none;
+    text-align: right;
+    color: #000;
+    background-color: #fff;
+    cursor: pointer;
+}
+#global_nav .close_btn span{
+    margin: 0px;
+    padding: 0px;
+    display: inline-block;
+}
+#global_nav .close_btn span.icon:before,
+#global_nav .close_btn span.icon:after{
+    width: 35px;
+    height: 6px;
+    display: block;
+    background: #000;
+    content: '';
+}
+#global_nav .close_btn span.icon:before{
+    transform: rotate(495deg) scaleX(0.7) translateX(5px);
+}
+#global_nav .close_btn span.icon:after{
+    transform: rotate(-495deg) scaleX(0.7) translateX(6px);
+}
+
+#main_content{
+    margin: 0px;
+    padding: 0px 8px;
+    grid-area: main_contents;
+    justify-self: center;
+}
+#main_content > article{
+    margin: 60px 0px 0px 0px;
+    padding: 0px;
+    opacity: 0;
+    transition: all 3s ease-in-out;
+}
+#main_content > article > h2{
+    margin: 0px;
+    padding: 0px;
+    font-size: 1.8rem;
+    border-bottom: solid 3px #543e17;
+    position: relative;
+}
+#main_content > article > h2:after{
+    content: "";
+    width: 20%;
+    display: block;
+    border-bottom: solid 3px #7bbc3a;
+    position: absolute;
+    bottom: -3px;
+}
+#main_content > article > dl{
+    margin: 30px 0px 0px 0px;
+    padding: 0px;
+}
+#main_content > article > dl > dt{
+    margin: 0px 0px 10px 0px;
+    padding: 0px;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+#main_content > article > dl > dd{
+    margin: 0px;
+    padding: 0px 0px 0px 20px;
+}
+#main_content > article > dl > dd.credo img{
+    width: auto;
+    height: 25px;
+}
+#main_content > article > dl > dd.credo dl{
+    margin: 0px;
+    padding: 8px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px dotted #ddd;
+}
+#main_content > article > dl > dd.credo dt{
+    margin: 0px;
+    padding: 0px;
+    width: 230px;
+}
+#main_content > article > dl > dd.credo dd{
+    margin: 4px 0px 0px 8px;
+    padding: 0px;
+    width: 300px;
+}
+
+#main_content .map{
+    margin: 20px 0px 0px 0px;
+    padding: 0px;
+    width: 100%;
+    height: 450px;
+}
+
+#main_footer{
+    margin: 60px 0px 0px 0px;
+    padding: 0px;
+    width: 100%;
+    grid-area: main_footer;
+    justify-self: center;
+}
+#main_footer small{
+    margin: 0;
+    padding: 8px 0px;
+    width: 100%;
+    display: block;
+    color: #fff;
+    text-align: center;
+    background-color: #533e17;
+}
+
+@media screen and (max-width: 800px){
+    /*#global_nav li a{
+        width: 90px;
+    }*/
+    #global_nav li label{
+        width: 90px;
+    }
+}
+
+@media screen and (max-width: 600px){
+    #app{
+        grid-template-areas:
+            "main_header"
+            "main_contents"
+            "main_footer";
+    }
+    
+    #main_header h1{
+        margin-top: 30px;
+        width: 90%;
+    }
+    
+    #main_header #catch_copy{
+        font-size: 2.4rem;
+    }
+    #main_header #eye_catch img{
+        width: 70%;
+    }
+    
+    #global_nav{
+        margin: 0px;
+        border: none;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 100;
+    }
+    #global_nav ul{
+        flex-direction: column;
+    }
+    #global_nav li{
+        border-bottom: solid 1px #533e17;
+    }
+    /*#global_nav li a{
+        width: 100%;
+    }*/
+    #global_nav li label{
+        padding: 10px 0px;
+        width: 100%;
+    }
+    #global_nav .nav_open{
+        display: inline-block;
+    }
+    #global_nav .close_btn{
+        display: block;
+    }
+    #global_nav .nav_input:checked ~ .nav_close{
+        display: block;
+        opacity: 0.5;
+    }
+    #global_nav .nav_input:checked ~ .nav_content{
+        display: block;
+        transform: translateX(0%);
+        box-shadow: 6px 0 25px rgba(0,0,0,0.15);
+        animation: nav_slide 0.3s ease-in-out 0s;
+    }
+    @keyframes nav_slide{
+        from{
+            width: 0;
+        }
+        to{
+            width: 90%;
+        }
+    }
+    #global_nav .nav_content{
+        margin: 0px 0px 0px 0px;
+        padding: 0px 0px 0px 0px;
+        display: none;
+        overflow: auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        width: 90%;
+        height: 100%;
+        font-size: 1.8rem;
+        background-color: #fff;
+        transform: translateX(-105%);
+        transition: all 0.3s ease-in-out;
+    }
+}
